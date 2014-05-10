@@ -1,0 +1,117 @@
+/*The following is an example of how to use the Corben Google Font 
+within the CSS document:
+
+font-family: 'Corben', cursive;
+
+h1 { font-family: ‘Metrophobic’, Arial, serif; font-weight: 400; }
+
+*/
+
+html{
+    width: 100%;
+    height: 100%;
+    background-color: #6A4E00;
+}
+
+body{
+    position: relative;
+}
+
+.outerbox{
+    position: relative;
+    top: 25px;
+    margin: auto;
+    width: 935px;
+    height: 640px;
+    border: #DBAC00 solid 10px;
+    border-radius: 100px;
+}
+
+.innerbox{
+    position: relative;
+    top: -617px;
+    bottom: 0;
+    margin: auto;
+    width: 900px;
+    height: 603px;
+    border: #CFC600 solid 10px;
+    border-radius: 85px;
+}
+
+.titleline-1{
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    font-family: 'Corben';
+    font-weight: 700;
+    font-size: 1em;
+    color: #DBAC00;
+}
+
+.titleline-2{
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    font-family: 'Corben';
+    font-weight: 700;
+    font-size: 3em;
+    color: #DBAC00;
+}
+
+.question1{
+    position: relative;
+    top:20px;
+    margin: auto;
+    color: #DBAC00;
+    font-family: 'Corben';
+    width: 850px;
+    height: 450px;
+}
+
+.firstpark{
+    position: relative;
+    font-size: 1.5em;
+    left: 30px;
+}
+
+.yellowstone{
+    position: relative;
+    top:40px;
+    width: 396px;
+    left: 75px;
+}
+
+.counter{
+    position: relative;
+    top: 75px;
+    left: 30px;
+    width: 130px;
+    height: 71px;
+    border: #CFC600 solid 5px;
+    border-radius: 30px;
+}
+
+.questioncount {
+    position: relative;
+    font-family: 'Corben';
+    font-weight: 700;
+    text-align: center;
+    top: 15px;
+}
+
+.questioncount li span{
+    position: relative;
+    top: 10px;
+}
+
+.answers{
+    position: relative;
+    width: 200px;
+    float: right;
+    top: -330px;
+}
+
+.answers ul li{
+    margin-top: 35px;
+    font-size: 1.25em;
+}
