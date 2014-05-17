@@ -58,60 +58,136 @@ body{
     color: #DBAC00;
 }
 
-.question1{
+.info{
     position: relative;
-    top:20px;
-    margin: auto;
-    color: #DBAC00;
-    font-family: 'Corben';
-    width: 850px;
+    width: 900px;
     height: 450px;
 }
 
-.firstpark{
+.intro{
     position: relative;
-    font-size: 1.5em;
-    left: 30px;
+    top: 25px;
+    text-align: center;
+    font-family: 'Corben';
+    color: #DBAC00;
+    letter-spacing: .04em;
 }
 
-.yellowstone{
+.arch{
     position: relative;
-    top:40px;
-    width: 396px;
-    left: 75px;
+    top: 25px;align-content;
 }
 
-.counter{
-    position: relative;
-    top: 75px;
-    left: 30px;
-    width: 130px;
-    height: 71px;
-    border: #CFC600 solid 5px;
-    border-radius: 30px;
-}
-
-.questioncount {
-    position: relative;
+.startquiz{
+    margin-top: 50px;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #DBAC00;
+    border-style: solid;
+    background-color: #6A4E00;
+    color: #DBAC00;
     font-family: 'Corben';
     font-weight: 700;
+}
+
+button:hover{
+    background-color: #DBAC00;
+    color: #6A4E00;
+    cursor: pointer;
+}
+
+.questions{
+    display: none;
+    position: relative;
+    top:20px;
+    left:50px;
+    width: 800px;
+    color: #DBAC00;
+    font-family: 'Corben';
+    font-size: 1.05em;
+    line-height: 120%;
+    letter-spacing: .04em
+}
+
+.images{
+    display: none;
+    position: relative;
+    top: 80px;
+    left: 75px;
+    width: 396px;
+}
+
+
+.answers {
+    position: relative;
+    display: none;
+    width: 300px;
+    top: -235px;
+    left: 550px;
+}
+
+li button{
+    margin-bottom: 59px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #6A4E00;
+    border-color: #DBAC00;
+    border-style: solid;
+    font-family: 'Corben';
+    font-weight: 700;
+    font-size: 1em;
+    color: #DBAC00;
+}
+
+.footer {
+    display: none;   
     text-align: center;
-    top: 15px;
 }
 
-.questioncount li span{
+.score{
     position: relative;
-    top: 10px;
+    text-align: center;
+    width: 100px;
+    margin:auto;
+    top: -220px;
+    font-family: 'Corben';
+    font-weight: 700;
+    color: #DBAC00;
+    letter-spacing: .05em
 }
 
-.answers{
+
+.count{
     position: relative;
-    width: 200px;
-    float: right;
-    top: -330px;
+    width: 150px;
+    text-align: center;
+    top: -237px;
+    left: 50px;
+    font-family: 'Corben';
+    font-weight: 700;
+    color: #DBAC00;
+    letter-spacing: .05em
 }
 
-.answers ul li{
-    margin-top: 35px;
-    font-size: 1.25em;
+.next{
+    display: none;   
+}
+
+.next button{
+    position: relative;
+    top: -265px;
+    width: 80px;
+    left: 290px;
+    border: none;
+    background-color: transparent;
+}
+
+.next span{
+    position: relative;
+    top: -275px;
+    left: 290px;
+    font-family: 'Corben';
+    font-weight: 700;
+    color: #DBAC00;
 }

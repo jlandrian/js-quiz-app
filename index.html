@@ -12,7 +12,7 @@
         
         <!--links to JS-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/app2.js"></script>
     
     </head>
 
@@ -21,28 +21,31 @@
         <div class="innerbox">
             <h1 class="titleline-1">United States</h1>
             <h2 class="titleline-2">National Parks Quiz</h2>
-            <div class="question1">
-                <div class="firstpark">1. What was the United States' first national park?</div>
-                <div class="yellowstone"><img src="images/yellowstone.gif"></div>
-                <div class="counter">
-                    <ul class="questioncount">
-                        <li>Question</li>
-                        <li><span>1/5</span></li>
-                    </ul>
+            <div class="info">
+                <div class="intro">Test your knowledge of the United States' National Parks
+                    <div class="arch"><img src="images/arch.gif"></div>
+                    <button class="startquiz">Take the quiz!</button>
                 </div>
+                <div class="questions"></div>
+                <div class="images"></div>
                 <div class="answers">
                     <ul>
-                        <li><input id="yosemite" type="radio">
-                            <label for="yosemite">Yosemite</label></li>
-                        <li><input id="yellowstone" type="radio">
-                            <label for="yellowstone"></label>Yellowstone</li>
-                        <li><input id="glacier" type="radio">
-                            <label for="glacier">Glacier</label></li>
-                        <li><input id="everglades" type="radio">
-                            <label for="everglades">Everglades</label></li>
+                        <li class="choice1"><button></button></li>
+                        <li class="choice2"><button></button></li>
+                        <li class="choice3"><button></button></li>
+                        <li class="choice4"><button></button></li>
                     </ul>
                 </div>
-                <div class="score">Score:<span> 0</span></div>
+                <div class="footer">
+                    <ul>
+                    <li class="score">Score: <span>0</span></li>
+                    <li class="count">Question: <span>1</span>/<span>5</span>   
+                    </li>
+                    <li class="next"><span>Next Question</span>
+                    <button><img src="images/next-arrow.gif"></button>
+                    </li>
+                    </ul>
+                    </div>
             </div>
         </div>
     </body>
