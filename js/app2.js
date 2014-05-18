@@ -69,7 +69,7 @@ function startQuiz() {
 
 function rightAnswerOne() {
     $(".questions").empty();
-    $(".questions").prepend(questions[0].correct);
+    $(".questions").prepend(questions[0].rightAnswer);
     score ++;
     $(".next").fadeIn(1000);
 }
