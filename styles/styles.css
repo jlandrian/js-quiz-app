@@ -140,8 +140,12 @@ li button{
     color: #DBAC00;
 }
 
+button:focus{
+    outline: none;
+}
+
 .footer {
-    display: none;   
+    display: none;
     text-align: center;
 }
 
@@ -170,23 +174,22 @@ li button{
     letter-spacing: .05em
 }
 
-.next{
-    display: none;   
-}
-
 .next button{
     position: relative;
-    top: -265px;
+    top: -29px;
     width: 80px;
-    left: 290px;
+    left: 120px;
     border: none;
     background-color: transparent;
 }
 
-.next span{
+.next {
+    display: none;
     position: relative;
-    top: -275px;
-    left: 290px;
+    width: 150px;
+    height: 20px;
+    top: -255px;
+    left: 630px;
     font-family: 'Corben';
     font-weight: 700;
     color: #DBAC00;

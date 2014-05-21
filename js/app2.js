@@ -83,7 +83,8 @@ function wrongAnswerOne() {
 $(document).ready(function() {
     $(".startquiz").on("click", startQuiz);
     $(".answers ul li button").on("click", function() {
-        if ($(this) == questions[0].choices[2]) {
+        console.log($(this), questions[0].choices[2]);
+        if ($(this).text() == questions[0].choices[2]) {
             rightAnswerOne();
             } else {
             wrongAnswerOne();
