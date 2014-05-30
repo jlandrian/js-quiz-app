@@ -67,7 +67,7 @@ var quiz = {
                 "Grand Teton"
             ],
             correctAnswer: 1,
-            successText: "Correct! 'Gates of the Arctic'is the US' northernmost national park. It is located in Alaska and is not accesible by road. Visitors must walk in or use an air taxi.",
+            successText: "Correct! 'Gates of the Arctic' is the US' northernmost national park. It is located in Alaska and is not accesible by road. Visitors must walk in or use an air taxi.",
             failureText: "Correct! 'Gates of the Arctic'is the US' northernmost national park. It is located in Alaska and is not accesible by road. Visitors must walk in or use an air taxi."
         }
  
@@ -82,6 +82,7 @@ var quiz = {
 };
 
 var score = quiz.currentScore;
+var currentQuestion = quiz.currentTurn;
 
 
 function startQuiz() {
@@ -97,16 +98,18 @@ function startQuiz() {
     $(".choice4 button").prepend(quiz.questions[0].choices[3]);
     $(".footer").fadeIn(1000);
     $(".score span").prepend(score);
+    currentQuestion++;
 }
 
 function getAnswer() {
     var indexClicked = $(this).parent().index();
-    $(".score span").text(score ++);
     $(".answers ul li button").attr("disabled", "disabled");
     if (quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
         $(".questions").empty();
         $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
         $(".next").fadeIn(1000);
+        score++;
+        $(".score span").text(score);
     } else {
         $(".questions").empty();
         $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
@@ -115,9 +118,26 @@ function getAnswer() {
     
 }
 
+function nextQuestion() {
+    $(".next").fadeOut(1000);
+    currentQuestion++;
+    $(".count span").text(currentQuestion);
+    quiz.currentTurn++;
+    $(".questions").empty();
+    $(".questions").prepend(quiz.questions[quiz.currentTurn].questionText);
+    $(".answers ul li button").empty();
+    $(".choice1 button").prepend(quiz.questions[quiz.currentTurn].choices[0]);
+    $(".choice2 button").prepend(quiz.questions[quiz.currentTurn].choices[1]);
+    $(".choice3 button").prepend(quiz.questions[quiz.currentTurn].choices[2]);
+    $(".choice4 button").prepend(quiz.questions[quiz.currentTurn].choices[3]);
+    $(".answers ul li button").removeAttr("disabled", "disabled");
+    
+}
+
 $(document).ready(function() {
     
     $(".startquiz").on("click", startQuiz);
     $(".answers ul li button").on("click", getAnswer);
+    $(".next button").on("click", nextQuestion);
     
 });
