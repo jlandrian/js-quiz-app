@@ -156,7 +156,8 @@ button:focus{
     text-align: center;
     width: 100px;
     margin:auto;
-    top: -220px;
+    top: 460px;
+    left: 375px;
     font-family: 'Corben';
     font-weight: 700;
     color: #DBAC00;
@@ -168,7 +169,7 @@ button:focus{
     position: absolute;
     width: 150px;
     text-align: center;
-    top: 410px;
+    top: 460px;
     left: 50px;
     font-family: 'Corben';
     font-weight: 700;
@@ -178,9 +179,9 @@ button:focus{
 
 .next button{
     position: absolute;
-    top: -13px;
+    top: -11px;
     width: 80px;
-    left: 160px;
+    left: 150px;
     border: none;
     background-color: transparent;
 }
@@ -190,8 +191,8 @@ button:focus{
     position: absolute;
     width: 150px;
     height: 20px;
-    top: 410px;
-    left: 550px;
+    top: 460px;
+    left: 630px;
     font-family: 'Corben';
     font-weight: 700;
     color: #DBAC00;
