@@ -68,7 +68,7 @@ var quiz = {
             ],
             correctAnswer: 1,
             successText: "Correct! 'Gates of the Arctic' is the US' northernmost national park. It is located in Alaska and is not accesible by road. Visitors must walk in or use an air taxi.",
-            failureText: "Correct! 'Gates of the Arctic'is the US' northernmost national park. It is located in Alaska and is not accesible by road. Visitors must walk in or use an air taxi."
+            failureText: "Incorrect. 'Gates of the Arctic'is the US' northernmost national park. It is located in Alaska and is not accesible by road. Visitors must walk in or use an air taxi."
         }
  
     ],
@@ -81,8 +81,6 @@ var quiz = {
     currentScore: 0
 };
 
-var score = quiz.currentScore;
-var currentQuestion = quiz.currentTurn;
 
 
 function startQuiz() {
@@ -97,8 +95,8 @@ function startQuiz() {
     $(".choice3 button").prepend(quiz.questions[0].choices[2]);
     $(".choice4 button").prepend(quiz.questions[0].choices[3]);
     $(".footer").fadeIn(1000);
-    $(".score span").prepend(score);
-    currentQuestion++;
+    $(".next").hide();
+    $(".score span").prepend(quiz.currentScore);
 }
 
 function getAnswer() {
@@ -108,21 +106,19 @@ function getAnswer() {
         $(".questions").empty();
         $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
         $(".next").fadeIn(1000);
-        score++;
-        $(".score span").text(score);
-    } else {
+        quiz.currentScore++;
+        $(".score span").text(quiz.currentScore);
+    }  else {
         $(".questions").empty();
         $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
         $(".next").fadeIn(1000);
-    };
-    
+    }
 }
 
 function nextQuestion() {
     $(".next").fadeOut(1000);
-    currentQuestion++;
-    $(".count span").text(currentQuestion);
     quiz.currentTurn++;
+    $(".count span").text(quiz.currentTurn + 1);
     $(".questions").empty();
     $(".questions").prepend(quiz.questions[quiz.currentTurn].questionText);
     $(".answers ul li button").empty();
@@ -131,7 +127,18 @@ function nextQuestion() {
     $(".choice3 button").prepend(quiz.questions[quiz.currentTurn].choices[2]);
     $(".choice4 button").prepend(quiz.questions[quiz.currentTurn].choices[3]);
     $(".answers ul li button").removeAttr("disabled", "disabled");
-    
+}
+
+function finalScore() {
+    $(".answers").fadeOut(1000);
+    $(".questions").empty();
+    $(".questions").prepend("Your got " + quiz.currentScore + " questions right!");
+    if (quiz.currentScore <= 3) {
+        $(".final").text("You should go and see more of America's national parks!");
+    } else {
+        $(".final").text("Great score! You know a lot about America's national parks!");
+    }
+    $(".final").fadeIn(1000);
 }
 
 $(document).ready(function() {
@@ -139,5 +146,6 @@ $(document).ready(function() {
     $(".startquiz").on("click", startQuiz);
     $(".answers ul li button").on("click", getAnswer);
     $(".next button").on("click", nextQuestion);
+    $(".summary button").on("click", finalScore);
     
 });
