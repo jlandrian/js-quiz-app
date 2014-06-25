@@ -101,14 +101,15 @@ function startQuiz() {
 
 function getAnswer() {
     var indexClicked = $(this).parent().index();
-    $(".answers ul li button").attr("disabled", "disabled");
     if (quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
+        $(".answers ul li button").attr("disabled", "disabled");
         $(".questions").empty();
         $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
         $(".next").fadeIn(1000);
         quiz.currentScore++;
         $(".score span").text(quiz.currentScore);
-    }  else {
+    }
+        else {
         $(".questions").empty();
         $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
         $(".next").fadeIn(1000);
@@ -129,23 +130,36 @@ function nextQuestion() {
     $(".answers ul li button").removeAttr("disabled", "disabled");
 }
 
-function finalScore() {
-    $(".answers").fadeOut(1000);
+/* function finalScore() {
+    if (quiz.currentTurn === 4) {
+        if (quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
+        $(".answers ul li button").attr("disabled", "disabled");
+        $(".questions").empty();
+        $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
+        quiz.currentScore++;
+        }
+        else {
+        $(".questions").empty();
+        $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
+        }
+    }
+};
+   $(".answers").fadeOut(1000);
     $(".questions").empty();
-    $(".questions").prepend("Your got " + quiz.currentScore + " questions right!");
+    $(".questions").prepend("You got " + quiz.currentScore + " questions right!");
     if (quiz.currentScore <= 3) {
         $(".final").text("You should go and see more of America's national parks!");
     } else {
         $(".final").text("Great score! You know a lot about America's national parks!");
     }
     $(".final").fadeIn(1000);
-}
+}*/
 
 $(document).ready(function() {
     
     $(".startquiz").on("click", startQuiz);
     $(".answers ul li button").on("click", getAnswer);
     $(".next button").on("click", nextQuestion);
-    $(".summary button").on("click", finalScore);
+    //$(".summary button").on("click", finalScore);
     
 });
