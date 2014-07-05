@@ -159,7 +159,7 @@ function finalScore() {
 
 $(document).ready(function() {
     $(".startquiz").on("click", startQuiz);
-    if (quiz.currentTurn === 4) {
+    if ($(".count span").text() >= 5) {
         $(".answers ul li button").on("click", lastQuestion);
     } else {
     $(".answers ul li button").on("click", getAnswer);
