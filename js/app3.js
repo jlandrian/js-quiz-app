@@ -101,19 +101,35 @@ function startQuiz() {
 
 function getAnswer() {
     var indexClicked = $(this).parent().index();
-    $(".answers ul li button").attr("disabled", "disabled");
-    if (quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
+    if(quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
+        $(".answers ul li button").attr("disabled", "disabled");
         $(".questions").empty();
         $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
-        $(".next").fadeIn(1000);
         quiz.currentScore++;
         $(".score span").text(quiz.currentScore);
-    }  else {
+    } else {
         $(".questions").empty();
         $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
-        $(".next").fadeIn(1000);
     }
-}
+         $(".next").fadeIn(1000);
+
+ };
+
+function lastQuestion() {
+    var indexClicked = $(this).parent().index();
+    if(quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
+        $(".answers ul li button").attr("disabled", "disabled");
+        $(".questions").empty();
+        $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
+        quiz.currentScore++;
+        $(".score span").text(quiz.currentScore);
+    } else {
+        $(".questions").empty();
+        $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
+    }
+    $(".summary button").fadeIn(1000);
+};
+    
 
 function nextQuestion() {
     $(".next").fadeOut(1000);
@@ -130,10 +146,10 @@ function nextQuestion() {
 }
 
 function finalScore() {
-    $(".answers").fadeOut(1000);
-    $(".questions").empty();
-    $(".questions").prepend("Your got " + quiz.currentScore + " questions right!");
-    if (quiz.currentScore <= 3) {
+        $(".answers").fadeOut(1000);
+        $(".questions").empty();
+        $(".questions").prepend("You got " + quiz.currentScore + " questions right!");
+        if (quiz.currentScore <= 3) {
         $(".final").text("You should go and see more of America's national parks!");
     } else {
         $(".final").text("Great score! You know a lot about America's national parks!");
@@ -142,9 +158,12 @@ function finalScore() {
 }
 
 $(document).ready(function() {
-    
     $(".startquiz").on("click", startQuiz);
+    if ($(".count span").text() >= 5) {
+        $(".answers ul li button").on("click", lastQuestion);
+    } else {
     $(".answers ul li button").on("click", getAnswer);
+    }
     $(".next button").on("click", nextQuestion);
     $(".summary button").on("click", finalScore);
     
