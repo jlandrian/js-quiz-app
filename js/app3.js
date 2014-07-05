@@ -100,6 +100,9 @@ function startQuiz() {
 }
 
 function getAnswer() {
+    if(quiz.currentTurn >= quiz.questions.length - 1) {
+        lastQuestion();
+    } else {
     var indexClicked = $(this).parent().index();
     if(quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
         $(".answers ul li button").attr("disabled", "disabled");
@@ -113,7 +116,8 @@ function getAnswer() {
     }
          $(".next").fadeIn(1000);
 
- };
+    }
+};
 
 function lastQuestion() {
     var indexClicked = $(this).parent().index();
@@ -159,11 +163,7 @@ function finalScore() {
 
 $(document).ready(function() {
     $(".startquiz").on("click", startQuiz);
-    if ($(".count span").text() >= 5) {
-        $(".answers ul li button").on("click", lastQuestion);
-    } else {
     $(".answers ul li button").on("click", getAnswer);
-    }
     $(".next button").on("click", nextQuestion);
     $(".summary button").on("click", finalScore);
     
