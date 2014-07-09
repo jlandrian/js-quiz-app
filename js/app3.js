@@ -78,16 +78,20 @@ var quiz = {
     currentTurn: 0,
  
     // currentScore can be 0 to 5
-    currentScore: 0
+    currentScore: 0,
+    
+    currentImage: 0
 };
 
 
 
 function startQuiz() {
+    if (quiz.currentImage === 0) {
+         $(".images").prepend("<img src='images/yellowstone.gif'>");
+    }
     $(".intro").fadeOut(100);
     $(".questions").prepend(quiz.questions[0].questionText);
     $(".questions").fadeIn(1000);
-    $(".images").prepend("<img src='images/yellowstone.gif'>");
     $(".images").fadeIn(1000);
     $(".answers").fadeIn(1000);
     $(".choice1 button").prepend(quiz.questions[0].choices[0]);
@@ -100,44 +104,28 @@ function startQuiz() {
 }
 
 function getAnswer() {
+    var indexClicked = $(this).parent().index();
+    if(quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
+        $(".answers ul li button").attr("disabled", "disabled");
+        $(".questions").empty();
+        $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
+        quiz.currentScore++;
+        $(".score span").text(quiz.currentScore);
+    } else {
+        $(".questions").empty();
+        $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
+    }
     if(quiz.currentTurn >= quiz.questions.length - 1) {
-        lastQuestion();
+        $(".summary button").fadeIn(1000);
     } else {
-    var indexClicked = $(this).parent().index();
-    if(quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
-        $(".answers ul li button").attr("disabled", "disabled");
-        $(".questions").empty();
-        $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
-        quiz.currentScore++;
-        $(".score span").text(quiz.currentScore);
-    } else {
-        $(".questions").empty();
-        $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
-    }
-         $(".next").fadeIn(1000);
-
+        $(".next").fadeIn(1000);
     }
 };
-
-function lastQuestion() {
-    var indexClicked = $(this).parent().index();
-    if(quiz.questions[quiz.currentTurn].correctAnswer === indexClicked) {
-        $(".answers ul li button").attr("disabled", "disabled");
-        $(".questions").empty();
-        $(".questions").prepend(quiz.questions[quiz.currentTurn].successText);
-        quiz.currentScore++;
-        $(".score span").text(quiz.currentScore);
-    } else {
-        $(".questions").empty();
-        $(".questions").prepend(quiz.questions[quiz.currentTurn].failureText);
-    }
-    $(".summary button").fadeIn(1000);
-};
-    
 
 function nextQuestion() {
     $(".next").fadeOut(1000);
     quiz.currentTurn++;
+    quiz.currentImage++;
     $(".count span").text(quiz.currentTurn + 1);
     $(".questions").empty();
     $(".questions").prepend(quiz.questions[quiz.currentTurn].questionText);
@@ -147,12 +135,26 @@ function nextQuestion() {
     $(".choice3 button").prepend(quiz.questions[quiz.currentTurn].choices[2]);
     $(".choice4 button").prepend(quiz.questions[quiz.currentTurn].choices[3]);
     $(".answers ul li button").removeAttr("disabled", "disabled");
-}
+    if (quiz.currentImage === 1) {
+        $(".images").empty();
+        $(".images").prepend("<img src='images/pinnacles-edit.gif'>");
+    }   else if (quiz.currentImage === 2) {
+        $(".images").empty();
+        $(".images").prepend("<img src='images/grant-edit.gif'>");
+    }   else if (quiz.currentImage === 3) {
+        $(".images").empty();
+        $(".images").prepend("<img src='images/muir-edit.gif'>");
+    }   else if (quiz.currentImage === 4) {
+        $(".images").empty();
+        $(".images").prepend("<img src='images/goa-edit.gif'>");
+    }
+};
 
 function finalScore() {
         $(".answers").fadeOut(1000);
         $(".questions").empty();
         $(".questions").prepend("You got " + quiz.currentScore + " questions right!");
+        $(".reset button").fadeIn(1000);
         if (quiz.currentScore <= 3) {
         $(".final").text("You should go and see more of America's national parks!");
     } else {
@@ -161,10 +163,32 @@ function finalScore() {
     $(".final").fadeIn(1000);
 }
 
+function resetQuiz() {
+    quiz.currentScore = 0;
+    quiz.currentTurn = 0;
+    quiz.currentImage = 0;
+    $(".questions").empty();
+    $(".questions").prepend(quiz.questions[0].questionText);
+    $(".final").empty();
+    $(".images").empty();
+    $(".images").prepend("<img src='images/yellowstone.gif'>");
+    $(".summary button").fadeOut(500);
+    $(".answers ul li button").empty();
+    $(".answers").fadeIn(1000);
+    $(".choice1 button").prepend(quiz.questions[0].choices[0]);
+    $(".choice2 button").prepend(quiz.questions[0].choices[1]);
+    $(".choice3 button").prepend(quiz.questions[0].choices[2]);
+    $(".choice4 button").prepend(quiz.questions[0].choices[3]);
+    $(".count span").text(quiz.currentTurn);
+    $(".score span").text(quiz.currentScore);
+    $(this).fadeOut(500);
+};
+
 $(document).ready(function() {
     $(".startquiz").on("click", startQuiz);
     $(".answers ul li button").on("click", getAnswer);
     $(".next button").on("click", nextQuestion);
     $(".summary button").on("click", finalScore);
+    $(".reset button").on("click", resetQuiz);
     
 });
